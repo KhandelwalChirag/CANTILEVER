@@ -26,7 +26,9 @@ def get_html_content(url: str) -> Optional[str]:
 
 
 def parse_categories(soup: BeautifulSoup) -> List[Dict[str, str]]:
-    """Parse and return the list of product categories and their URLs."""
+
+    # Parse and return the list of product categories and their URLs.
+
     category_tags = soup.find_all('a', class_=re.compile(r'ctsm_headinglink[1-5]'))
     categories = []
     for tag in category_tags[:5]:
@@ -38,7 +40,9 @@ def parse_categories(soup: BeautifulSoup) -> List[Dict[str, str]]:
 
 
 def parse_product_info(content: BeautifulSoup, category: str) -> List[Dict[str, Optional[str]]]:
-    """Parse and return product information from the HTML content."""
+
+    #Parse and return product information from the HTML content.
+    
     products = []
     product_info = content.find_all('div', class_="ProductItem__Wrapper")
 
@@ -66,8 +70,9 @@ def parse_product_info(content: BeautifulSoup, category: str) -> List[Dict[str, 
 
 
 def main(output_csv: str):
-    """Main function to scrape product information and save it to a CSV file."""
-    # Fetch and parse the main page
+
+    #Main function to scrape product information and save it to a CSV file.
+    
     html_content = get_html_content(BASE_URL)
     if not html_content:
         logging.error("Failed to retrieve the main page.")
@@ -76,10 +81,12 @@ def main(output_csv: str):
     soup = BeautifulSoup(html_content, 'html.parser')
 
     # Get categories
+
     categories = parse_categories(soup)
     logging.info(f"Categories found: {[category['name'] for category in categories]}")
 
     # Collect all product information
+
     all_products = []
 
     for category in categories:
@@ -97,6 +104,7 @@ def main(output_csv: str):
         logging.info(f"Fetched {len(products)} products from {category_name}")
 
     # Create a DataFrame and save to CSV
+    
     df = pd.DataFrame(all_products)
     df.to_csv(output_csv, index=False)
     logging.info(f"CSV file '{output_csv}' has been created successfully.")
