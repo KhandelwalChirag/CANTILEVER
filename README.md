@@ -21,6 +21,8 @@ This project is a web application built with Flask that scrapes product data fro
 
 ## Installation
 
+The CSV file for the data is already included. That can be used directly by running app.py. Otherwise you can use dataExtract.py and update the data CSV file. 
+
 1. **Clone the repository:**
 
    ```bash
