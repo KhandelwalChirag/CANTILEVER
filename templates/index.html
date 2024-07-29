@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lakme Product Search</title>
+</head>
+<body>
+    <h1>Lakme Product Search</h1>
+    <form method="POST">
+        <input type="text" name="search" placeholder="Search for a product" value="{{ search_term }}">
+        <input type="submit" value="Search">
+    </form>
+
+    {% if search_performed %}
+        {% if results %}
+            <h2>Search Results for "{{ search_term }}":</h2>
+            <ul>
+            {% for product in results %}
+                <li>
+                    <strong>{{ product.Name }}</strong><br>
+                    Category: {{ product.Category }}<br>
+                    Price: {{ product.Price }}<br>
+                    Rating: {{ product.Rating if product.Rating else 'N/A' }}
+                </li>
+            {% endfor %}
+            </ul>
+        {% else %}
+            <p>No matching products found for "{{ search_term }}".</p>
+        {% endif %}
+    {% endif %}
+</body>
+</html>

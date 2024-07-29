@@ -1,0 +1,6 @@
+Error Handling: Wrapped network requests in try-except blocks to handle potential issues.
+Logging: Added logging statements to provide feedback on the script's execution and facilitate debugging.
+Modularity: Divided the code into functions for fetching HTML content, parsing categories, and parsing product information.
+Command-Line Interface: Added command-line argument parsing to specify the output CSV file path.
+Configuration Constants: Used constants for URLs and the default output CSV file name for easy configuration.
+Documentation: Added docstrings and comments for clarity.
