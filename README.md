@@ -12,7 +12,7 @@ This project is a web application built with Flask that scrapes product data fro
 - extracts the details of all the products in different categories from various pages
 - Stores product data in a CSV file.
 - Provides a web interface to search for products.
-- Uses fuzzywuzzy for better seacrh recommendations.
+- Uses fuzzywuzzy for better search recommendations.
 
 ## Prerequisites
 
